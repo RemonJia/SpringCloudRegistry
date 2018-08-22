@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MicroserviceController {
 	@RequestMapping("/register")
 	public String hello(){
+		//你还哦
 		return "注册成功";
 	}
 	@RequestMapping("/login")

@@ -13,6 +13,6 @@ public class MicroserviceController {
 	}
 	@RequestMapping("/login")
 	public String haha(){
-		return "欢迎大佬";
+		return "欢迎";
 	}
 }

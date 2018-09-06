@@ -16,20 +16,18 @@
         //获取数据
         $scope.login = function() {
             $http({
-                url : '/logon',
+                url : '/ms/logon',
                 method : 'POST',
                 data : $scope.data
             }).success(function(data) {
-                for ( var i in $scope.rows) {
-                    var row = $scope.rows[i];
-                    if (data.id == row.id) {
-                        row.no = data.no;
-                        row.date = data.date;
-                        row.quantity = data.quantity;
-                        return;
-                    }
-                }
-                $scope.rows.push(data);
+            	console.log(data);
+            	if(data.res == "success"){
+            		console.log("登录成功");
+            		window.location.href ="index.html";
+            	}else{
+            		console.log("登录失败");
+            		$scope.msginfo="密码错误!";
+            	}               
             });
         }
       
@@ -38,7 +36,8 @@
 </head>
 <body ng-app="app" ng-controller="MainController">
     <h1>登录</h1>
-    
+    <p style="red"> {{msginfo}}</p>
+    <input id="msg" ng-hide="true" ng-model="msginfo"/>
  	<table cellspacing="1" style="background-color: #a0c6e5">
         <tr>
             <td>用户名：</td>

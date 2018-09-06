@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jym.bean.User;
 import com.jym.dao.UserDao;
+import com.jym.util.MD5Util;
 
 @Controller
 public class CommonController {
@@ -30,9 +31,14 @@ public class CommonController {
 	@RequestMapping("/logon")
 	public String logon(@RequestBody User user){
 		User u = userDao.getUserByUsername(user.getUsername());
-		log.info(u.getUsername());
-		System.out.println(u.getPassword());
+		String s = MD5Util.encryptPassword(u.getPassword());
+		log.info(s);
+		if(MD5Util.encryptPassword(user.getPassword()).equals(u.getPassword())
+				|| MD5Util.encryptPassword(user.getPassword()) == u.getPassword()){//验证密码
+			return "index";
+		}else{
+			return "pwderror";
+		}		
 		
-		return "index";
 	}
 }

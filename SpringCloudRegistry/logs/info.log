@@ -1,0 +1,3 @@
+[17:00:12:768] [INFO] - org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.start(DefaultLifecycleProcessor.java:341) - Starting beans in phase 0
+[17:00:12:779] [INFO] - org.springframework.cloud.netflix.eureka.serviceregistry.EurekaServiceRegistry.register(EurekaServiceRegistry.java:40) - Registering application eureka-server with eureka with status UP
+[17:00:12:821] [INFO] - org.springframework.jmx.export.MBeanExporter.registerBeanInstance(MBeanExporter.java:674) - Located managed bean 'archaiusEndpoint': registering with JMX server as MBean [org.springframework.boot:type=Endpoint,name=archaiusEndpoint]

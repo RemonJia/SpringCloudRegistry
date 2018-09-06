@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>登录</title>
+<script src="//cdn.bootcss.com/angular.js/1.5.6/angular.min.js"></script>
+<script type="text/javascript">
+  
+    var app = angular.module('app', []);
+    app.controller('MainController', function($rootScope, $scope, $http) {
+
+        $scope.data = {};
+        $scope.rows = [];     
+
+      
+        //获取数据
+        $scope.login = function() {
+            $http({
+                url : '/logon',
+                method : 'POST',
+                data : $scope.data
+            }).success(function(data) {
+                for ( var i in $scope.rows) {
+                    var row = $scope.rows[i];
+                    if (data.id == row.id) {
+                        row.no = data.no;
+                        row.date = data.date;
+                        row.quantity = data.quantity;
+                        return;
+                    }
+                }
+                $scope.rows.push(data);
+            });
+        }
+      
+    });
+</script>
+</head>
+<body ng-app="app" ng-controller="MainController">
+    <h1>登录</h1>
+    
+ 	<table cellspacing="1" style="background-color: #a0c6e5">
+        <tr>
+            <td>用户名：</td>
+            <td><input id="username" ng-model="data.username" /></td>           
+            
+        </tr>
+        <tr>
+       		 <td>密码：</td>
+            <td><input id="password" ng-model="data.password" /></td>
+          </tr>
+    </table>
+    <input type="button" value="登录" ng-click="login()" />
+    <br />
+    <br />
+   
+    
+
+   
+   
+</body>
+</html>

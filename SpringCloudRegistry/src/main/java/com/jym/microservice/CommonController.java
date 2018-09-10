@@ -41,4 +41,8 @@ public class CommonController {
 		}		
 		
 	}
+	@RequestMapping("/menu")
+	public String menu(){
+		return "index";
+	}
 }

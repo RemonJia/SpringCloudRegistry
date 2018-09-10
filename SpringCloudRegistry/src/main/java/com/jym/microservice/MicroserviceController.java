@@ -43,21 +43,21 @@ public class MicroserviceController {
 	}
 	
 	//登录动作
-		@RequestMapping("/logon")
-		public String logon(@RequestBody User user){
-			User u = userDao.getUserByUsername(user.getUsername());
-			String s = MD5Util.encryptPassword(u.getPassword());
-			log.info(s);
-			if(MD5Util.encryptPassword(user.getPassword()).equals(u.getPassword())
-					|| MD5Util.encryptPassword(user.getPassword()) == u.getPassword()){//验证密码
-				JsonObject json = new JsonObject();
-				json.addProperty("res", "success");
-				return json.toString();
-			}else{
-				JsonObject json = new JsonObject();
-				json.addProperty("res", "error");
-				return json.toString();
-			}		
-			
-		}
+	@RequestMapping("/logon")
+	public String logon(@RequestBody User user){
+		User u = userDao.getUserByUsername(user.getUsername());
+		String s = MD5Util.encryptPassword(u.getPassword());
+		log.info(s);
+		if(MD5Util.encryptPassword(user.getPassword()).equals(u.getPassword())
+				|| MD5Util.encryptPassword(user.getPassword()) == u.getPassword()){//验证密码
+			JsonObject json = new JsonObject();
+			json.addProperty("res", "success");
+			return json.toString();
+		}else{
+			JsonObject json = new JsonObject();
+			json.addProperty("res", "error");
+			return json.toString();
+		}		
+		
+	}
 }

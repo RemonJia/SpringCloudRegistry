@@ -7,7 +7,6 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 import org.springframework.context.annotation.ComponentScan;
 
 
-@MapperScan("com.jym")
 @EnableEurekaServer
 @SpringBootApplication
 public class Application {
